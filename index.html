@@ -165,19 +165,24 @@
         regester_btn.addEventListener('click',function(){
                 var new_name = make_name.value
                 var new_word = make_password.value
-                Database.add(new_name,new_word)
-                regester_div.className='regester'
-                alert("注册成功，请重新登陆！")
+                if(new_name==''||new_word==''){
+                    alert("内容不能为空")
+                }
+                else{
+                    Database.add(new_name,new_word)
+                    regester_div.className='regester'
+                    alert("注册成功，请重新登陆！")
+                }
         })
 
         login_btn.addEventListener('click',function(){
             true_word=Database[username]
-            if(true_word == password )
+            if(true_word != password ||password==''||username=='')
             {
-                window.location.href="https://keen-dieffenbachia-a86531.netlify.app/"
+                alert("密码错误！")
             }
             else{
-                alert("密码错误，请重新输入！")
+                window.location.href="https://keen-dieffenbachia-a86531.netlify.app/"
             }
         })
     }
